@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Project Proposal — Bighorn Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple-deep: #1a0a2e;
+            --purple-dark: #2d1b4e;
+            --purple-mid: #5b2d8e;
+            --purple-bright: #8b5cf6;
+            --purple-light: #a78bfa;
+            --purple-glow: #c4b5fd;
+            --blue-accent: #6366f1;
+            --pink-accent: #d946ef;
+            --bg-dark: #0a0a0f;
+            --bg-card: #111118;
+            --bg-card-hover: #1a1a24;
+            --text-primary: #f1f0f5;
+            --text-secondary: #a09bb0;
+            --text-muted: #6b6580;
+            --border-color: rgba(139, 92, 246, 0.15);
+            --gradient-cosmic: linear-gradient(135deg, #5b2d8e 0%, #6366f1 50%, #8b5cf6 100%);
+            --gradient-glow: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        /* ── Header ─────────────────────────── */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-logo img {
+            height: 40px;
+            width: auto;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 8px;
+            padding: 2px 6px;
+        }
+
+        .header-meta {
+            text-align: right;
+            font-size: 0.875rem;
+        }
+
+        .header-meta .date {
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .header-meta .client-name {
+            color: var(--purple-light);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* ── Title ──────────────────────────── */
+        .proposal-title {
+            margin-bottom: 36px;
+        }
+
+        .proposal-title h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, var(--purple-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+        }
+
+        .proposal-title .project-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--purple-bright);
+            font-weight: 600;
+        }
+
+        /* ── Sections ───────────────────────── */
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 24px;
+            right: 24px;
+            height: 2px;
+            background: var(--gradient-cosmic);
+            border-radius: 2px;
+        }
+
+        .section h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--purple-light);
+            margin-bottom: 12px;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ── Deliverables List ───────────────── */
+        .deliverables-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .deliverables-list li {
+            padding: 10px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.07);
+        }
+
+        .deliverables-list li:last-child {
+            border-bottom: none;
+        }
+
+        .deliverables-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--purple-bright);
+            font-weight: 600;
+        }
+
+        /* ── Investment Box ──────────────────── */
+        .investment-box {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .investment-amount {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .investment-details {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        /* ── Next Steps ──────────────────────── */
+        .steps-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: steps;
+        }
+
+        .steps-list li {
+            counter-increment: steps;
+            padding: 8px 0;
+            padding-left: 32px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .steps-list li::before {
+            content: counter(steps);
+            position: absolute;
+            left: 0;
+            width: 22px;
+            height: 22px;
+            background: var(--gradient-cosmic);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            line-height: 22px;
+        }
+
+        /* ── Footer ──────────────────────────── */
+        .footer {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer a {
+            color: var(--purple-light);
+            text-decoration: none;
+        }
+
+        .footer-contact span {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .footer-contact span:first-child {
+            margin-left: 0;
+        }
+
+        /* ── Print Styles ────────────────────── */
+        @media print {
+            :root {
+                --text-primary: #111;
+                --text-secondary: #444;
+                --text-muted: #777;
+            }
+
+            body {
+                background: white;
+                color: #111;
+                font-size: 11pt;
+            }
+
+            .page {
+                padding: 0;
+                max-width: none;
+            }
+
+            .section {
+                background: white;
+                border: 1px solid #ddd;
+                box-shadow: none;
+                break-inside: avoid;
+            }
+
+            .section::before {
+                background: #5b2d8e;
+            }
+
+            .proposal-title h1 {
+                background: none;
+                -webkit-text-fill-color: #1a0a2e;
+                color: #1a0a2e;
+            }
+
+            .investment-amount {
+                background: none;
+                -webkit-text-fill-color: #5b2d8e;
+                color: #5b2d8e;
+            }
+
+            .header-meta .client-name {
+                color: #5b2d8e;
+            }
+
+            .section h2 {
+                color: #5b2d8e;
+            }
+
+            .deliverables-list li::before {
+                color: #5b2d8e;
+            }
+
+            .steps-list li::before {
+                background: #5b2d8e;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .footer {
+                border-top: 1px solid #ddd;
+            }
+
+            .footer a {
+                color: #5b2d8e;
+            }
+
+            .proposal-title .project-label {
+                color: #5b2d8e;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-logo">
+                <img src="assets/images/BW Banner-trimmed.png" alt="Bighorn Solutions">
+            </div>
+            <div class="header-meta">
+                <div class="date">[DATE]</div>
+                <div class="client-name">Prepared for [CLIENT NAME]</div>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class="proposal-title">
+            <div class="project-label">Project Proposal</div>
+            <h1>[PROJECT TITLE]</h1>
+        </div>
+
+        <!-- Project Summary -->
+        <div class="section">
+            <h2>Project Summary</h2>
+            <p>[BRIEF SUMMARY — 2-3 sentences describing the project, the problem it solves, and the value it delivers to the client. Keep it high-level and outcome-focused.]</p>
+        </div>
+
+        <!-- Deliverables -->
+        <div class="section">
+            <h2>What We'll Deliver</h2>
+            <ul class="deliverables-list">
+                <li>[DELIVERABLE 1 — e.g., Custom website design & development]</li>
+                <li>[DELIVERABLE 2 — e.g., Mobile-responsive implementation]</li>
+                <li>[DELIVERABLE 3 — e.g., CMS integration for easy content updates]</li>
+                <li>[DELIVERABLE 4 — e.g., SEO optimization & analytics setup]</li>
+                <li>[DELIVERABLE 5 — e.g., 30-day post-launch support]</li>
+            </ul>
+        </div>
+
+        <!-- Investment -->
+        <div class="section">
+            <h2>Investment</h2>
+            <div class="investment-box">
+                <div class="investment-amount">[$ AMOUNT]</div>
+                <div class="investment-details">
+                    [PRICING DETAILS — e.g., one-time project fee, includes all design, development, and testing. 50% deposit to begin, 50% upon completion. Optional: monthly retainer for ongoing support.]
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="section">
+            <h2>Next Steps</h2>
+            <ol class="steps-list">
+                <li>[STEP 1 — e.g., Review this proposal and let us know any questions]</li>
+                <li>[STEP 2 — e.g., Sign off and submit deposit to kick off the project]</li>
+                <li>[STEP 3 — e.g., We'll schedule a kickoff call to align on details]</li>
+            </ol>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div>&copy; Bighorn Solutions</div>
+            <div class="footer-contact">
+                <span><a href="mailto:[EMAIL]">[EMAIL]</a></span>
+                <span>[PHONE]</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

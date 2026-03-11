@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /pitch-deck.html
+Disallow: /one-pager-template.html
+Disallow: /proposal-template.html
+Disallow: /proposal-generator.html
+
+Sitemap: https://bighornsolutions.ca/sitemap.xml

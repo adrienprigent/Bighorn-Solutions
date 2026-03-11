@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Bighorn Solutions — Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/images/B&W Logo with name.png">
+    <style>
+        /* ===== DESIGN SYSTEM ===== */
+        :root {
+            --purple-deep: #1a0a2e;
+            --purple-dark: #2d1b4e;
+            --purple-mid: #5b2d8e;
+            --purple-bright: #8b5cf6;
+            --purple-light: #a78bfa;
+            --purple-glow: #c4b5fd;
+            --blue-accent: #6366f1;
+            --pink-accent: #d946ef;
+            --bg-dark: #0a0a0f;
+            --bg-card: #111118;
+            --text-primary: #f1f0f5;
+            --text-secondary: #a09bb0;
+            --text-muted: #6b6580;
+            --border-color: rgba(139, 92, 246, 0.15);
+            --border-hover: rgba(139, 92, 246, 0.3);
+            --gradient-cosmic: linear-gradient(135deg, #5b2d8e 0%, #6366f1 50%, #8b5cf6 100%);
+            --gradient-glow: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        /* ===== RESET ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+        }
+
+        /* ===== SLIDE ===== */
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            padding: 48px 72px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-gradient {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(26, 10, 46, 0.3) 50%, var(--bg-dark) 100%);
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        h1 { font-size: 3.2em; font-weight: 800; }
+        h2 { font-size: 2em; margin-bottom: 0.4em; }
+        h3 { font-size: 1.05em; margin-bottom: 0.3em; }
+        h4 { font-size: 0.9em; }
+        p { margin: 0 0 0.8em 0; }
+
+        /* ===== LOGO ===== */
+        .slide-logo {
+            height: 32px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        /* ===== GRADIENT TEXT ===== */
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== SECTION TAG ===== */
+        .section-tag {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 50px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            color: var(--purple-light);
+            font-size: 0.68em;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 22px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gradient-cosmic);
+        }
+
+        .card h3 { color: var(--text-primary); font-size: 1em; }
+        .card p { color: var(--text-secondary); font-size: 0.8em; line-height: 1.55; margin: 0; }
+
+        /* ===== GRIDS ===== */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+        .grid-2-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+        /* ===== STATS ===== */
+        .stat-value {
+            font-size: 1.3em;
+            font-weight: 800;
+            background: var(--gradient-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1px;
+        }
+
+        .stat-label {
+            font-size: 0.65em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .stat-row {
+            display: flex;
+            gap: 20px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 10px;
+        }
+
+        /* ===== BADGES ===== */
+        .case-category {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 50px;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--purple-light);
+            font-size: 0.6em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .problem-icon { margin-bottom: 10px; display: flex; }
+        .problem-icon svg { width: 28px; height: 28px; color: var(--purple-bright); }
+
+        /* ===== ICON BOX ===== */
+        .icon-box {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .icon-box svg { width: 20px; height: 20px; color: var(--purple-bright); }
+
+        /* ===== STEP NUMBER ===== */
+        .step-number {
+            flex-shrink: 0;
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--purple-mid);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1em; font-weight: 800;
+            color: var(--purple-bright);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== VALUE PILL ===== */
+        .value-pill {
+            padding: 12px 14px;
+            border-radius: var(--radius);
+            background: rgba(139, 92, 246, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .value-pill h4 { font-size: 0.85em; color: var(--purple-light); margin-bottom: 3px; }
+        .value-pill p { font-size: 0.72em; color: var(--text-muted); line-height: 1.45; margin: 0; }
+
+        /* ===== CREDENTIAL CARD ===== */
+        .credential-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 10px;
+        }
+
+        .credential-card:last-child { margin-bottom: 0; }
+        .credential-card .credential-icon { margin-bottom: 6px; display: flex; }
+        .credential-card .credential-icon svg { width: 22px; height: 22px; color: var(--purple-bright); }
+        .credential-card h4 { font-size: 0.82em; color: var(--purple-light); margin-bottom: 4px; }
+        .credential-card p { font-size: 0.72em; color: var(--text-secondary); line-height: 1.5; margin: 0; }
+
+        /* ===== INDUSTRY CARD ===== */
+        .industry-card {
+            text-align: center;
+            padding: 28px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+        }
+
+        .industry-card svg { width: 32px; height: 32px; color: var(--purple-bright); margin: 0 auto 10px; display: block; }
+        .industry-card h4 { font-size: 0.85em; color: var(--text-primary); font-weight: 600; margin: 0; }
+
+        /* ===== SERVICE MINI ===== */
+        .service-mini {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 16px 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-mini::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gradient-cosmic);
+        }
+
+        .service-mini h4 { font-size: 0.82em; color: var(--text-primary); margin-bottom: 4px; }
+        .service-mini p { color: var(--text-secondary); font-size: 0.7em; line-height: 1.5; margin: 0; }
+
+        .services-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+        .services-bottom-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 12px;
+            max-width: 66.66%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== APPROACH ROW ===== */
+        .approach-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .approach-row:last-child { margin-bottom: 0; }
+        .approach-row .step-content h3 { margin-bottom: 3px; }
+        .approach-row .step-content p { color: var(--text-secondary); font-size: 0.78em; line-height: 1.55; margin: 0; }
+
+        .about-body p { color: var(--text-secondary); font-size: 0.75em; line-height: 1.6; margin-bottom: 8px; }
+
+        .disclaimer { font-size: 0.68em; color: var(--text-muted); font-style: italic; margin-bottom: 14px; }
+
+        /* ===== TITLE SLIDE ===== */
+        .slide-title {
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide-title .title-logo {
+            height: 56px;
+            width: auto;
+            max-width: 340px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            margin-bottom: 32px;
+        }
+
+        .slide-title h1 { margin-bottom: 12px; }
+        .slide-title .subtitle { color: var(--text-secondary); font-size: 1.05em; max-width: 580px; margin: 0 auto 28px; line-height: 1.6; }
+        .slide-title .contact-line { color: var(--text-muted); font-size: 0.82em; margin: 0; }
+        .slide-title .contact-line a { color: var(--purple-light); text-decoration: none; }
+
+        .slide-title::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(91, 45, 142, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* ===== CTA SLIDE ===== */
+        .slide-cta {
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide-cta h2 { font-size: 2.4em; }
+
+        .slide-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(91, 45, 142, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 36px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
+            background: var(--gradient-cosmic);
+            color: white;
+            box-shadow: 0 4px 15px rgba(91, 45, 142, 0.4);
+            text-decoration: none;
+            margin-top: 12px;
+        }
+
+        /* ===== SLIDE COUNTER ===== */
+        .slide-number {
+            position: absolute;
+            bottom: 20px; right: 32px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== KEYBOARD NAV HINT ===== */
+        .nav-hint {
+            position: fixed;
+            bottom: 16px; left: 50%;
+            transform: translateX(-50%);
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 8px;
+            padding: 8px 20px;
+            color: var(--text-muted);
+            font-size: 0.72em;
+            z-index: 100;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .nav-hint.hidden { opacity: 0; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .slide { padding: 28px 24px; }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            .slide-title h1 { font-size: 2.2em; }
+            .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 10px; }
+            .grid-2 { grid-template-columns: 1fr; gap: 16px; }
+            .grid-2-cards { grid-template-columns: 1fr; gap: 8px; }
+            .services-layout { grid-template-columns: 1fr; gap: 8px; }
+            .services-bottom-row { grid-template-columns: 1fr; max-width: 100%; gap: 8px; }
+            .slide-logo { height: 28px; margin-bottom: 16px; }
+            .slide-title .title-logo { height: 40px; margin-bottom: 20px; }
+            .nav-hint { display: none; }
+        }
+
+        /* ===== PRINT ===== */
+        @page {
+            size: 1280px 720px;
+            margin: 0;
+        }
+
+        @media print {
+            *, *::before, *::after {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            html {
+                scroll-snap-type: none;
+            }
+
+            body {
+                background: var(--bg-dark) !important;
+            }
+
+            .slide {
+                width: 1280px !important;
+                height: 720px !important;
+                min-height: 720px !important;
+                max-height: 720px !important;
+                overflow: hidden !important;
+                page-break-after: always;
+                break-after: page;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .slide:last-child {
+                page-break-after: auto;
+                break-after: auto;
+            }
+
+            .gradient-text {
+                background: none !important;
+                -webkit-background-clip: unset !important;
+                background-clip: unset !important;
+                -webkit-text-fill-color: #ffffff !important;
+                color: #ffffff !important;
+            }
+
+            .stat-value {
+                background: none !important;
+                -webkit-background-clip: unset !important;
+                background-clip: unset !important;
+                -webkit-text-fill-color: var(--purple-bright) !important;
+                color: var(--purple-bright) !important;
+            }
+
+            .cta-btn {
+                background: var(--purple-mid) !important;
+                box-shadow: none !important;
+            }
+
+            .title-slide::before,
+            .slide-cta::before {
+                display: none !important;
+            }
+
+            .nav-hint, .slide-number {
+                display: none !important;
+            }
+
+            .slide-logo, .title-logo {
+                width: auto !important;
+                max-width: 200px !important;
+                object-fit: contain !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: TITLE -->
+    <section class="slide slide-title">
+        <img src="assets/images/BW Banner-trimmed.png" alt="Bighorn Solutions" class="title-logo">
+        <h1 class="gradient-text">Smarter Systems.<br>Stronger Operations.</h1>
+        <p class="subtitle">We help businesses simplify workflows, eliminate repetitive work, and make better decisions through practical AI and automation.</p>
+        <p class="contact-line">
+            <a href="mailto:info@bighornsolutions.ca">info@bighornsolutions.ca</a>&nbsp;&nbsp;&bull;&nbsp;&nbsp;<a href="tel:+14038359758">(403) 835-9758</a>
+        </p>
+    </section>
+
+    <!-- SLIDE 2: THE PROBLEM -->
+    <section class="slide">
+        <img src="assets/images/BW Banner-trimmed.png" alt="Bighorn Solutions" class="slide-logo">
+        <span class="section-tag">The Challenge</span>
+        <h2 class="gradient-text">Small businesses are running on manual processes.</h2>
+        <div class="grid-3" style="margin-top: 20px;">
+            <div class="card">
+                <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="m6.34 6.34 2.83 2.83"></path><path d="M2 12h4"></path><path d="m6.34 17.66 2.83-2.83"></path><path d="M12 18v4"></path><path d="m17.66 17.66-2.83-2.83"></path><path d="M18 12h4"></path><path d="m17.66 6.34-2.83 2.83"></path><circle cx="12" cy="12" r="4"></circle></svg></div>
+                <h3>Repetitive Tasks</h3>
+                <p>Staff spend hours on manual data entry, copy-pasting between tools, and repetitive admin work that could be automated.</p>
+            </div>
+            <div class="card">
+                <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m7 17 4-8 4 4 4-8"></path></svg></div>
+                <h3>Scattered Data</h3>
+                <p>Critical information lives in disconnected spreadsheets, email threads, and siloed tools &mdash; making reporting slow and decisions guesswork.</p>
+            </div>
+            <div class="card">
+                <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path><path d="M8 7h6"></path><path d="M8 11h8"></path></svg></div>
+                <h3>Knowledge Gaps</h3>
+                <p>Institutional knowledge is locked in binders and long-tenured employees. When someone leaves, critical information walks out the door.</p>
+            </div>
+        </div>
+        <div class="slide-number">2 / 9</div>
+    </section>
+
+    <!-- SLIDE 3: THE SOLUTION -->
+    <section class="slide">
+        <img src="assets/images/BW Banner-trimmed.png" alt="Bighorn Solutions" class="slide-logo">
+        <span class="section-tag">Our Solution</span>
+        <div class="grid-2">
+            <div>
+                <h2 class="gradient-text">Practical AI that works for your business.</h2>
+                <p style="color: var(--text-secondary); font-size: 0.85em; line-height: 1.6; margin-bottom: 18px;">Bighorn Solutions helps organizations improve operational systems through practical applications of artificial intelligence, automation, and digital tools. We simplify workflows, reduce repetitive work, and help businesses make better decisions with their data.</p>
+                <div class="grid-2-cards">
+                    <div class="value-pill"><h4>Practical</h4><p>Solutions that solve real problems, not technology for technology's sake.</p></div>
+                    <div class="value-pill"><h4>Reliable</h4><p>Systems built to work day in, day out. No fragile prototypes.</p></div>
+                    <div class="value-pill"><h4>Clear</h4><p>No jargon, no complexity theater. Just honest communication.</p></div>
+                    <div class="value-pill"><h4>Local</h4><p>Based in the Bow Valley. We know your market and your challenges.</p></div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <div style="width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(99, 102, 241, 0.08) 40%, transparent 70%); display: flex; align-items: center; justify-content: center;">
+                    <div style="width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%); border: 1px solid var(--border-hover); display: flex; align-items: center; justify-content: center;">
+                        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--purple-bright)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4"></path><path d="m6.34 6.34 2.83 2.83"></path><path d="M2 12h4"></path>
+                            <path d="m6.34 17.66 2.83-2.83"></path><path d="M12 18v4"></path><path d="m17.66 17.66-2.83-2.83"></path>
+                            <path d="M18 12h4"></path><path d="m17.66 6.34-2.83 2.83"></path><circle cx="12" cy="12" r="4"></circle>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">3 / 9</div>
+    </section>
+
+    <!-- SLIDE 4: SERVICES -->
+    <section class="slide">
+        <img src="assets/images/BW Banner-trimmed.png" alt="Bighorn Solutions" class="slide-logo">
+        <span class="section-tag">What We Do</span>
+        <h2 class="gradient-text">AI &amp; Automation Services</h2>
+        <div class="services-layout" style="margin-top: 14px;">
+            <div class="service-mini">
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path><path d="M11 8v6"></path><path d="M8 11h6"></path></svg></div>
+                <h4>AI Opportunity Assessment</h4>
+                <p>Review workflows, identify inefficiencies, and deliver a clear roadmap for AI and automation implementation.</p>
+            </div>
+            <div class="service-mini">
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="m6.34 6.34 2.83 2.83"></path><path d="M2 12h4"></path><path d="m6.34 17.66 2.83-2.83"></path><path d="M12 18v4"></path><path d="m17.66 17.66-2.83-2.83"></path><path d="M18 12h4"></path><path d="m17.66 6.34-2.83 2.83"></path><circle cx="12" cy="12" r="4"></circle></svg></div>
+                <h4>Workflow Automation</h4>
+                <p>Automate repetitive tasks, connect existing tools, and create automated data flows that reduce manual work.</p>
+            </div>
+            <div class="service-mini">
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+                <h4>AI Knowledge Assistants</h4>
+                <p>Internal AI assistants trained on company documents for instant answers and better knowledge sharing.</p>
+            </div>
+        </div>
+        <div class="services-bottom-row">
+            <div class="service-mini">
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m7 17 4-8 4 4 4-8"></path></svg></div>
+                <h4>AI Reporting &amp; Dashboards</h4>
+                <p>Centralize business data, create operational dashboards, and surface AI-assisted insights for better decisions.</p>
+            </div>
+            <div class="service-mini">
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6"></path><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg></div>
+                <h4>Document &amp; Report Automation</h4>
+                <p>Automated proposals, AI-generated summaries, meeting transcription, and standardized documentation.</p>
+            </div>
+        </div>
+        <div class="slide-number">4 / 9</div>
+    </section>
+
+    <!-- SLIDE 5: ABOUT US -->
+    <section class="slide slide-gradient">
+        <img src="assets/images/BW Banner-trimmed.png" alt="Bighorn Solutions" class="slide-logo">
+        <span class="section-tag">About Us</span>
+        <div class="grid-2" style="gap: 28px;">
+            <div class="about-body">
+                <h2 class="gradient-text" style="font-size: 1.5em;">A Bow Valley consultant who knows your world.</h2>
+                <p>Bighorn Solutions is based in Exshaw, Alberta &mdash; right in the heart of the Bow Valley. We were founded on a simple conviction: the AI and automation advantages that large enterprises enjoy should be accessible to the small and medium businesses that make this valley run.</p>
+                <p>Our founder brings a background in operations management at Rocky Mountain Soap Company &mdash; hands-on leadership across supply chain, team management, and multi-function operations. Combined with active service as a firefighter with Bighorn Fire Department, where high-stakes decisions, clear communication under pressure, and protecting what matters are the job every single day.</p>
+                <p>That combination shapes how we work: understand the real problem first, then build something practical that works. We&rsquo;re not a remote agency parachuting in from Calgary. We live here. We know your seasons, your staffing pressures, and what it actually takes to run a business in this valley.</p>
+            </div>
+            <div>
+                <div class="credential-card">
+                    <div class="credential-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path></svg></div>
+                    <h4>Operations Management</h4>
+                    <p>Hands-on leadership at Rocky Mountain Soap Company: supply chain, team management, multi-function operations.</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14 0-5.5 3.5-7.5-2.5 5 1.28 6.69 2 8 .72 1.31 1 3.5-.5 5.5a3 3 0 0 1-4 1 3 3 0 0 1-2.5-1.5Z"></path><path d="M11.5 16a1 1 0 1 0 2 0c0-.56-.26-1-.73-1.43"></path><path d="M2 2v20h20"></path></svg></div>
+                    <h4>Crisis Management</h4>
+                    <p>Active firefighter, Bighorn Fire Department: high-stakes decisions, clear communication, performing under pressure.</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"></path><path d="M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19"></path></svg></div>
+                    <h4>Bow Valley Roots</h4>
+                    <p>Based in Exshaw. We understand your market, your seasons, and your staffing challenges.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">5 / 9</div>
+    </section>
+
+    <!-- SLIDE 6: APPROACH -->
+    <section class="slide">
+        <img src="assets/images/BW Banner-trimmed.png" alt="Bighorn Solutions" class="slide-logo">
+        <span class="section-tag">How We Work</span>
+        <h2 class="gradient-text">Our Approach</h2>
+        <p style="color: var(--text-secondary); font-size: 0.85em; max-width: 580px; margin-bottom: 20px;">A straightforward, collaborative process designed to deliver measurable results without unnecessary complexity.</p>
+        <div class="grid-2" style="gap: 24px;">
+            <div>
+                <div class="approach-row">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Discover</h3>
+                        <p>We review your current tools, workflows, and pain points to build a complete picture of where AI and automation can make the biggest impact.</p>
+                    </div>
+                </div>
+                <div class="approach-row">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Design</h3>
+                        <p>We map out a practical solution tailored to your specific needs. No over-engineered systems &mdash; just clear, focused solutions that solve real problems.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="approach-row">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Build</h3>
+                        <p>We implement in stages, integrating with your existing tools and systems so you see progress and can provide feedback along the way.</p>
+                    </div>
+                </div>
+                <div class="approach-row">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Support</h3>
+                        <p>After launch, we train your team and provide ongoing support. We stay available to optimize, adjust, and scale as your business grows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">6 / 9</div>
+    </section>
+
+    <!-- SLIDE 7: WHAT'S POSSIBLE -->
+    <section class="slide slide-gradient">
+        <img src="assets/images/BW Banner-trimmed.png" alt="Bighorn Solutions" class="slide-logo">
+        <span class="section-tag">Results</span>
+        <h2 class="gradient-text" style="font-size: 1.6em;">What businesses like yours typically achieve.</h2>
+        <p class="disclaimer">Illustrative scenarios based on industry benchmarks for AI and automation implementations.</p>
+        <div class="grid-3" style="gap: 14px;">
+            <div class="card" style="padding: 18px 16px;">
+                <div class="case-category">Workflow Automation</div>
+                <h3 style="font-size: 0.92em;">Tourism &amp; Booking Operations</h3>
+                <p style="font-size: 0.72em; line-height: 1.5;">A hospitality business managing bookings across spreadsheets, email, and phone implements an automated booking pipeline, calendar sync, and confirmation/follow-up sequences.</p>
+                <div class="stat-row" style="margin-top: 8px; padding-top: 10px;">
+                    <div><div class="stat-value" style="font-size: 1.15em;">60&ndash;70%</div><div class="stat-label">Less manual work</div></div>
+                    <div><div class="stat-value" style="font-size: 1.15em;">2&ndash;3&times;</div><div class="stat-label">Faster responses</div></div>
+                </div>
+            </div>
+            <div class="card" style="padding: 18px 16px;">
+                <div class="case-category">AI Knowledge Assistant</div>
+                <h3 style="font-size: 0.92em;">Manufacturing &amp; SOPs</h3>
+                <p style="font-size: 0.72em; line-height: 1.5;">A manufacturer with institutional knowledge locked in binders builds an AI assistant trained on SOPs and safety documents. Any employee can get accurate answers instantly.</p>
+                <div class="stat-row" style="margin-top: 8px; padding-top: 10px;">
+                    <div><div class="stat-value" style="font-size: 1.15em;">80&ndash;90%</div><div class="stat-label">Faster info retrieval</div></div>
+                    <div><div class="stat-value" style="font-size: 1.15em;">40&ndash;50%</div><div class="stat-label">Shorter onboarding</div></div>
+                </div>
+            </div>
+            <div class="card" style="padding: 18px 16px;">
+                <div class="case-category">Reporting &amp; Dashboards</div>
+                <h3 style="font-size: 0.92em;">Operations &amp; Reporting</h3>
+                <p style="font-size: 0.72em; line-height: 1.5;">A business pulling data from multiple disconnected systems replaces manual monthly reports with real-time AI-powered dashboards that update automatically.</p>
+                <div class="stat-row" style="margin-top: 8px; padding-top: 10px;">
+                    <div><div class="stat-value" style="font-size: 1.15em;">85&ndash;95%</div><div class="stat-label">Less time on reports</div></div>
+                    <div><div class="stat-value" style="font-size: 1.15em;">Real-time</div><div class="stat-label">Visibility</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">7 / 9</div>
+    </section>
+
+    <!-- SLIDE 8: WHO WE SERVE -->
+    <section class="slide">
+        <img src="assets/images/BW Banner-trimmed.png" alt="Bighorn Solutions" class="slide-logo">
+        <span class="section-tag">Who We Serve</span>
+        <h2 class="gradient-text">Industries We Work With</h2>
+        <p style="color: var(--text-secondary); font-size: 0.85em; max-width: 520px; margin-bottom: 24px;">We specialize in helping small and medium businesses across key industries modernize their operations.</p>
+        <div class="grid-4">
+            <div class="industry-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8Z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                <h4>Tourism &amp;<br>Hospitality</h4>
+            </div>
+            <div class="industry-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path></svg>
+                <h4>Manufacturing &amp;<br>Fabrication</h4>
+            </div>
+            <div class="industry-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V8l9-6 9 6v14"></path><path d="M9 22V12h6v10"></path></svg>
+                <h4>Local<br>Government</h4>
+            </div>
+            <div class="industry-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                <h4>Small &amp; Medium<br>Business</h4>
+            </div>
+        </div>
+        <div class="slide-number">8 / 9</div>
+    </section>
+
+    <!-- SLIDE 9: CTA -->
+    <section class="slide slide-cta">
+        <img src="assets/images/BW Banner-trimmed.png" alt="Bighorn Solutions" class="slide-logo" style="margin-bottom: 32px;">
+        <h2 class="gradient-text">Ready to work smarter?</h2>
+        <p style="color: var(--text-secondary); font-size: 1em; max-width: 520px; margin: 0 auto 10px; line-height: 1.65;">Book a free consultation to discuss how AI and automation can improve your business operations. No pressure, no jargon &mdash; just a practical conversation about what&rsquo;s possible.</p>
+        <a href="tel:+14038359758" class="cta-btn">Book a Consultation</a>
+        <div style="margin-top: 32px;">
+            <p style="color: var(--text-muted); font-size: 0.82em; margin: 0;">
+                <svg style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 5px; color: var(--purple-bright);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                info@bighornsolutions.ca&nbsp;&nbsp;&bull;&nbsp;&nbsp;(403) 835-9758
+            </p>
+        </div>
+    </section>
+
+    <div class="nav-hint" id="navHint">&#8593; &#8595; Arrow keys or scroll to navigate</div>
+
+    <script>
+        // Hide nav hint after first interaction
+        let hinted = false;
+        function hideHint() {
+            if (!hinted) {
+                hinted = true;
+                document.getElementById('navHint').classList.add('hidden');
+            }
+        }
+        window.addEventListener('scroll', hideHint, { once: true });
+        window.addEventListener('keydown', function(e) {
+            hideHint();
+            const slides = document.querySelectorAll('.slide');
+            const current = Math.round(window.scrollY / window.innerHeight);
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (current < slides.length - 1) slides[current + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (current > 0) slides[current - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
