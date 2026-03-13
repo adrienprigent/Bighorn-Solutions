@@ -193,12 +193,22 @@ h3 {
     border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.85);
     transition: all var(--transition);
 }
 
 .nav-link:hover,
 .nav-link.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.navbar.scrolled .nav-link {
+    color: var(--text-secondary);
+}
+
+.navbar.scrolled .nav-link:hover,
+.navbar.scrolled .nav-link.active {
     color: var(--purple-mid);
     background: rgba(91, 45, 142, 0.06);
 }
@@ -227,9 +237,13 @@ h3 {
 .nav-toggle span {
     width: 24px;
     height: 2px;
-    background: var(--text-primary);
+    background: #ffffff;
     border-radius: 2px;
     transition: all var(--transition);
+}
+
+.navbar.scrolled .nav-toggle span {
+    background: var(--text-primary);
 }
 
 /* ===== HERO ===== */
@@ -369,7 +383,7 @@ h3 {
 
 /* ===== SERVICES ===== */
 .services {
-    padding: 120px 0;
+    padding: 80px 0;
     position: relative;
 }
 
@@ -503,7 +517,7 @@ h3 {
 
 /* ===== APPROACH ===== */
 .approach {
-    padding: 120px 0;
+    padding: 80px 0;
     background: linear-gradient(180deg, #ffffff 0%, #f5f3fa 50%, #ffffff 100%);
 }
 
@@ -563,7 +577,7 @@ h3 {
 
 /* ===== CASE STUDIES ===== */
 .case-studies {
-    padding: 120px 0;
+    padding: 80px 0;
 }
 
 .cases-grid {
@@ -648,7 +662,7 @@ h3 {
 
 /* ===== ABOUT ===== */
 .about {
-    padding: 120px 0;
+    padding: 80px 0;
     background: linear-gradient(180deg, #ffffff 0%, #f8f7fc 50%, #ffffff 100%);
 }
 
@@ -722,7 +736,7 @@ h3 {
 
 /* ===== INDUSTRIES ===== */
 .industries {
-    padding: 100px 0;
+    padding: 72px 0;
 }
 
 .industries-grid {
@@ -768,7 +782,7 @@ h3 {
 
 /* ===== CONTACT ===== */
 .contact {
-    padding: 100px 0;
+    padding: 72px 0;
     background: linear-gradient(180deg, #ffffff 0%, #f5f3fa 100%);
 }
 
@@ -1193,11 +1207,11 @@ h3 {
     .case-studies,
     .about,
     .contact {
-        padding: 80px 0;
+        padding: 56px 0;
     }
 
     .industries {
-        padding: 60px 0;
+        padding: 48px 0;
     }
 
     .section-header {
