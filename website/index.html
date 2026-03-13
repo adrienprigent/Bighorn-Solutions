@@ -67,6 +67,15 @@
     </script>
 </head>
 <body>
+    <!-- Hidden form for Netlify bot detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input name="bot-field">
+        <input name="name">
+        <input name="email">
+        <input name="company">
+        <input name="service">
+        <textarea name="message"></textarea>
+    </form>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -428,6 +437,7 @@
                 </div>
                 <div class="contact-form-wrapper" data-animate>
                     <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required placeholder="Your full name">

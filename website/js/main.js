@@ -99,11 +99,15 @@ contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
 
     const formData = new FormData(this);
+    const body = new URLSearchParams(formData).toString();
 
-    fetch('/', {
+    fetch(contactForm.getAttribute('action') || '/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
+        body: body
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Form submission failed');
     })
     .then(() => {
         contactForm.style.display = 'none';
