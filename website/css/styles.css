@@ -3,23 +3,23 @@
     --purple-deep: #1a0a2e;
     --purple-dark: #2d1b4e;
     --purple-mid: #5b2d8e;
-    --purple-bright: #8b5cf6;
-    --purple-light: #a78bfa;
+    --purple-bright: #7c3aed;
+    --purple-light: #6d28d9;
     --purple-glow: #c4b5fd;
-    --blue-accent: #6366f1;
-    --pink-accent: #d946ef;
-    --bg-dark: #0a0a0f;
-    --bg-card: #111118;
-    --bg-card-hover: #1a1a24;
-    --text-primary: #f1f0f5;
-    --text-secondary: #a09bb0;
-    --text-muted: #6b6580;
-    --border-color: rgba(139, 92, 246, 0.15);
-    --border-hover: rgba(139, 92, 246, 0.3);
+    --blue-accent: #4f46e5;
+    --pink-accent: #c026d3;
+    --bg-dark: #ffffff;
+    --bg-card: #f8f7fc;
+    --bg-card-hover: #f0eef7;
+    --text-primary: #1a1a2e;
+    --text-secondary: #555566;
+    --text-muted: #888899;
+    --border-color: rgba(91, 45, 142, 0.12);
+    --border-hover: rgba(91, 45, 142, 0.25);
     --gradient-cosmic: linear-gradient(135deg, #5b2d8e 0%, #6366f1 50%, #8b5cf6 100%);
-    --gradient-glow: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
-    --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.15);
-    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --gradient-glow: linear-gradient(135deg, #7c3aed 0%, #c026d3 100%);
+    --shadow-glow: 0 0 30px rgba(91, 45, 142, 0.08);
+    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
     --radius: 12px;
     --radius-lg: 20px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -123,8 +123,18 @@ h3 {
 }
 
 .btn-secondary:hover {
-    background: rgba(139, 92, 246, 0.1);
+    background: rgba(91, 45, 142, 0.06);
     border-color: var(--purple-bright);
+}
+
+.hero-buttons .btn-secondary {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.hero-buttons .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .btn-full {
@@ -145,10 +155,11 @@ h3 {
 }
 
 .navbar.scrolled {
-    background: rgba(10, 10, 15, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
     padding: 6px 0;
 }
 
@@ -165,9 +176,6 @@ h3 {
     height: 56px;
     width: auto;
     transition: all var(--transition);
-    background: rgba(255, 255, 255, 0.92);
-    border-radius: 8px;
-    padding: 2px 6px;
 }
 
 .navbar.scrolled .nav-logo img {
@@ -191,8 +199,8 @@ h3 {
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--text-primary);
-    background: rgba(139, 92, 246, 0.1);
+    color: var(--purple-mid);
+    background: rgba(91, 45, 142, 0.06);
 }
 
 .nav-cta {
@@ -252,10 +260,10 @@ h3 {
     inset: 0;
     background: linear-gradient(
         180deg,
-        rgba(10, 10, 15, 0.4) 0%,
-        rgba(10, 10, 15, 0.6) 30%,
-        rgba(10, 10, 15, 0.85) 70%,
-        rgba(10, 10, 15, 1) 100%
+        rgba(26, 10, 46, 0.45) 0%,
+        rgba(26, 10, 46, 0.55) 30%,
+        rgba(26, 10, 46, 0.75) 70%,
+        rgba(255, 255, 255, 1) 100%
     );
 }
 
@@ -271,9 +279,9 @@ h3 {
     display: inline-block;
     padding: 8px 20px;
     border-radius: 50px;
-    background: rgba(139, 92, 246, 0.15);
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    color: var(--purple-light);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0d4fc;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -283,15 +291,12 @@ h3 {
 
 .hero h1 {
     margin-bottom: 24px;
-    background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff;
 }
 
 .hero p {
     font-size: clamp(1.05rem, 2vw, 1.25rem);
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.85);
     max-width: 600px;
     margin: 0 auto 40px;
     line-height: 1.7;
@@ -315,7 +320,7 @@ h3 {
 .scroll-indicator {
     width: 28px;
     height: 44px;
-    border: 2px solid rgba(139, 92, 246, 0.4);
+    border: 2px solid rgba(91, 45, 142, 0.3);
     border-radius: 14px;
     display: flex;
     justify-content: center;
@@ -325,7 +330,7 @@ h3 {
 .scroll-indicator span {
     width: 4px;
     height: 10px;
-    background: var(--purple-bright);
+    background: var(--purple-mid);
     border-radius: 2px;
     animation: scrollBounce 2s infinite;
 }
@@ -346,9 +351,9 @@ h3 {
     display: inline-block;
     padding: 6px 16px;
     border-radius: 50px;
-    background: rgba(139, 92, 246, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    color: var(--purple-light);
+    background: rgba(91, 45, 142, 0.08);
+    border: 1px solid rgba(91, 45, 142, 0.15);
+    color: var(--purple-mid);
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -376,7 +381,7 @@ h3 {
     transform: translateX(-50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(91, 45, 142, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(91, 45, 142, 0.04) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -399,6 +404,7 @@ h3 {
     transition: all var(--transition);
     position: relative;
     overflow: hidden;
+    box-shadow: var(--shadow-card);
 }
 
 .service-card::before {
@@ -428,7 +434,7 @@ h3 {
     width: 52px;
     height: 52px;
     border-radius: 12px;
-    background: rgba(139, 92, 246, 0.1);
+    background: rgba(91, 45, 142, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -485,8 +491,8 @@ h3 {
     display: inline-block;
     padding: 4px 12px;
     border-radius: 50px;
-    background: rgba(217, 70, 239, 0.1);
-    border: 1px solid rgba(217, 70, 239, 0.2);
+    background: rgba(192, 38, 211, 0.08);
+    border: 1px solid rgba(192, 38, 211, 0.15);
     color: var(--pink-accent);
     font-size: 0.75rem;
     font-weight: 600;
@@ -498,7 +504,7 @@ h3 {
 /* ===== APPROACH ===== */
 .approach {
     padding: 120px 0;
-    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(26, 10, 46, 0.3) 50%, var(--bg-dark) 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f5f3fa 50%, #ffffff 100%);
 }
 
 .approach-steps {
@@ -529,14 +535,14 @@ h3 {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: var(--bg-card);
+    background: #ffffff;
     border: 2px solid var(--purple-mid);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--purple-bright);
+    color: var(--purple-mid);
     position: relative;
     z-index: 1;
     font-family: 'Bebas Neue', sans-serif;
@@ -574,6 +580,7 @@ h3 {
     transition: all var(--transition);
     display: flex;
     flex-direction: column;
+    box-shadow: var(--shadow-card);
 }
 
 .case-card:hover {
@@ -586,8 +593,8 @@ h3 {
     display: inline-block;
     padding: 4px 12px;
     border-radius: 50px;
-    background: rgba(139, 92, 246, 0.1);
-    color: var(--purple-light);
+    background: rgba(91, 45, 142, 0.08);
+    color: var(--purple-mid);
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -642,7 +649,7 @@ h3 {
 /* ===== ABOUT ===== */
 .about {
     padding: 120px 0;
-    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(26, 10, 46, 0.2) 50%, var(--bg-dark) 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f8f7fc 50%, #ffffff 100%);
 }
 
 .about-layout {
@@ -669,7 +676,7 @@ h3 {
 .about-image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(91, 45, 142, 0.2) 0%, transparent 100%);
+    background: linear-gradient(135deg, rgba(91, 45, 142, 0.1) 0%, transparent 100%);
 }
 
 .about-content .section-tag {
@@ -697,13 +704,13 @@ h3 {
 .value {
     padding: 20px;
     border-radius: var(--radius);
-    background: rgba(139, 92, 246, 0.05);
+    background: rgba(91, 45, 142, 0.04);
     border: 1px solid var(--border-color);
 }
 
 .value h4 {
     font-size: 0.95rem;
-    color: var(--purple-light);
+    color: var(--purple-mid);
     margin-bottom: 6px;
 }
 
@@ -762,7 +769,7 @@ h3 {
 /* ===== CONTACT ===== */
 .contact {
     padding: 100px 0;
-    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(26, 10, 46, 0.3) 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f5f3fa 100%);
 }
 
 .contact-layout {
@@ -799,7 +806,7 @@ h3 {
 }
 
 .contact-details .contact-item a:hover {
-    color: var(--purple-light);
+    color: var(--purple-mid);
 }
 
 .contact-item {
@@ -826,6 +833,7 @@ h3 {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     padding: 40px;
+    box-shadow: var(--shadow-card);
 }
 
 .form-group {
@@ -846,8 +854,8 @@ h3 {
     width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #ddd;
+    background: #ffffff;
     color: var(--text-primary);
     font-family: inherit;
     font-size: 0.92rem;
@@ -864,19 +872,19 @@ h3 {
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--purple-bright);
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(91, 45, 142, 0.08);
 }
 
 .form-group select {
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6580' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888899' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 16px center;
     cursor: pointer;
 }
 
 .form-group select option {
-    background: var(--bg-card);
+    background: #ffffff;
     color: var(--text-primary);
 }
 
@@ -936,9 +944,6 @@ h3 {
 .footer-logo {
     height: 70px;
     margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.92);
-    border-radius: 8px;
-    padding: 2px 6px;
 }
 
 .footer-brand p {
@@ -968,7 +973,7 @@ h3 {
 }
 
 .footer-links a:hover {
-    color: var(--purple-light);
+    color: var(--purple-mid);
 }
 
 .footer-bottom {
@@ -1048,7 +1053,7 @@ h3 {
         right: -100%;
         width: 280px;
         height: 100vh;
-        background: rgba(10, 10, 15, 0.98);
+        background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
@@ -1206,10 +1211,10 @@ h3 {
     .hero-overlay {
         background: linear-gradient(
             180deg,
-            rgba(10, 10, 15, 0.5) 0%,
-            rgba(10, 10, 15, 0.7) 30%,
-            rgba(10, 10, 15, 0.9) 70%,
-            rgba(10, 10, 15, 1) 100%
+            rgba(26, 10, 46, 0.55) 0%,
+            rgba(26, 10, 46, 0.65) 30%,
+            rgba(26, 10, 46, 0.8) 70%,
+            rgba(255, 255, 255, 1) 100%
         );
     }
 
